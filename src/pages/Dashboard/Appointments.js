@@ -7,7 +7,7 @@ const Appointments = ({ date }) => {
    const { user, token } = useAuth()
 
    useEffect(() => {
-      fetch(`http://localhost:5000/appointments?email=${user.email}&date=${date}`, {
+      fetch(`https://aqueous-journey-67105.herokuapp.com/appointments?email=${user.email}&date=${date}`, {
          headers: {
             'authorization': `Bearer ${token}`
          }

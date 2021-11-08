@@ -101,7 +101,7 @@ const useFirebase = () => {
 
 
    useEffect(() => {
-      fetch(`http://localhost:5000/users/${user.email}`)
+      fetch(`https://aqueous-journey-67105.herokuapp.com/users/${user?.email}`)
          .then(res => res.json())
          .then(data => {
 
@@ -128,7 +128,7 @@ const useFirebase = () => {
       const user = {
          email, displayName
       }
-      fetch("http://localhost:5000/users", {
+      fetch("https://aqueous-journey-67105.herokuapp.com/users", {
          method: method,
          headers: {
             "content-type": "application/json"
