@@ -1,5 +1,6 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const Appointments = ({ date }) => {
@@ -7,7 +8,7 @@ const Appointments = ({ date }) => {
    const { user, token } = useAuth()
 
    useEffect(() => {
-      fetch(`https://aqueous-journey-67105.herokuapp.com/appointments?email=${user.email}&date=${date}`, {
+      fetch(`https://aqueous-journey-67105.herokuapp.com/appointments?email=${user.email}&date=${date.toLocaleDateString()}`, {
          headers: {
             'authorization': `Bearer ${token}`
          }
@@ -28,6 +29,7 @@ const Appointments = ({ date }) => {
                      <TableCell>Patient name</TableCell>
                      <TableCell align="right">time</TableCell>
                      <TableCell align="right">Service Name</TableCell>
+                     <TableCell align="right">Payment</TableCell>
 
                   </TableRow>
                </TableHead>
@@ -42,6 +44,9 @@ const Appointments = ({ date }) => {
                         </TableCell>
                         <TableCell align="right">{row.time}</TableCell>
                         <TableCell align="right">{row.serviceName}</TableCell>
+                        {row?.payment ? "Paid" :
+                           <Link to={`/dashboard/payment/${row?._id}`}><button>pay</button></Link>
+                        }
                      </TableRow>
                   ))}
                </TableBody>

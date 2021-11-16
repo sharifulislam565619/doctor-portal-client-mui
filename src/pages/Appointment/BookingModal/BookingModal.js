@@ -20,7 +20,7 @@ const style = {
 };
 
 const BookingModal = ({ modalOpen, handleCloseModal, booking, date, setSuccess }) => {
-   const { name, time } = booking
+   const { name, time, price } = booking
    const { user } = useAuth()
 
    const initialInfo = { userName: user.displayName, userEmail: user.email, phone: "" }
@@ -39,10 +39,10 @@ const BookingModal = ({ modalOpen, handleCloseModal, booking, date, setSuccess }
       const appointment = {
          ...userInfo,
          time,
+         price,
          serviceName: name,
          date: date.toLocaleDateString()
       }
-      console.log(appointment);
       fetch("https://aqueous-journey-67105.herokuapp.com/appointments", {
          method: "POST",
          headers: {

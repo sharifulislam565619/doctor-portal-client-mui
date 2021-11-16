@@ -3,6 +3,7 @@ import Navigation from '../../Shared/Navigation/Navigation';
 import AppointmentBanner from '../AppointmentBanner/AppointmentBanner';
 import Banner from '../Banner/Banner';
 import Contact from '../Contact/Contact';
+import Doctors from '../Doctors/Doctors';
 import Exception from '../Exception/Exception';
 import Services from '../Services/Services';
 import Testimonial from './Testimonial/Testimonial';
@@ -17,6 +18,7 @@ const Home = () => {
          <Exception />
          <AppointmentBanner />
          <Testimonial />
+         <Doctors />
          <Contact></Contact>
       </div>
    );

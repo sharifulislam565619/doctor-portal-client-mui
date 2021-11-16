@@ -107,8 +107,10 @@ const useFirebase = () => {
 
             setAdmin(data.admin)
 
+         }).catch(() => {
+
          })
-   }, [user.email])
+   }, [user?.email])
 
 
    const logOut = () => {

@@ -18,6 +18,7 @@ import AdminRoute from '../Login/AdminRoute/AdminRoute';
 import AddAdmin from './AddAdmin/AddAdmin';
 import AddDoctor from './AddDoctor/AddDoctor';
 import DashboardHome from './DashboardHome/DashboardHome';
+import Payment from './Payment/Payment';
 
 
 const drawerWidth = 240;
@@ -114,6 +115,9 @@ function Dashboard(props) {
             <Switch>
                <Route exact path={path}>
                   <DashboardHome></DashboardHome>
+               </Route>
+               <Route path={`${path}/payment/:appointmentId`}>
+                  <Payment></Payment>
                </Route>
                <AdminRoute path={`${path}/addAdmin`}>
                   <AddAdmin></AddAdmin>
