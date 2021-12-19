@@ -15,7 +15,7 @@ const CheckoutForm = ({ appointment }) => {
    // console.log(clientSecret);
 
    useEffect(() => {
-      fetch("http://localhost:5000/stripe.paymentIntents.create", {
+      fetch("https://aqueous-journey-67105.herokuapp.com/stripe.paymentIntents.create", {
          method: "POST",
          headers: { "Content-Type": "application/json" },
          body: JSON.stringify({ price }),
@@ -78,7 +78,7 @@ const CheckoutForm = ({ appointment }) => {
             transactionId: paymentIntent.client_secret.slice('_secret')[0],
             last4: paymentMethod.last4
          }
-         const url = `http://localhost:5000/appointment/${_id}`
+         const url = `https://aqueous-journey-67105.herokuapp.com/appointment/${_id}`
          fetch(url, {
             method: 'PUT',
             headers: {

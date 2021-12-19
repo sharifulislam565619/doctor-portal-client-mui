@@ -10,15 +10,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 import * as React from 'react';
-import {
-   Link, Route, Switch, useRouteMatch
-} from "react-router-dom";
+import { Link, Outlet } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
-import AdminRoute from '../Login/AdminRoute/AdminRoute';
-import AddAdmin from './AddAdmin/AddAdmin';
-import AddDoctor from './AddDoctor/AddDoctor';
-import DashboardHome from './DashboardHome/DashboardHome';
-import Payment from './Payment/Payment';
 
 
 const drawerWidth = 240;
@@ -26,7 +19,6 @@ const drawerWidth = 240;
 function Dashboard(props) {
    const { window } = props;
    const [mobileOpen, setMobileOpen] = React.useState(false);
-   let { path, url } = useRouteMatch();
    const { admin } = useAuth()
 
    const handleDrawerToggle = () => {
@@ -38,9 +30,9 @@ function Dashboard(props) {
          <Toolbar />
          <Divider />
          <Link to="/home"><Button variant="inherit">Home</Button></Link><br />
-         <Link to={`${url}`}><Button variant="inherit">Dashboard</Button></Link>
-         {admin && <Box> <Link to={`${url}/addAdmin`}><Button variant="inherit">AddAdmin</Button></Link>
-            <Link to={`${url}/addDoctor`}><Button variant="inherit">Add a doctor</Button></Link></Box>}
+         <Link to={`/dashboard`}><Button variant="inherit">Dashboard</Button></Link>
+         {admin && <Box> <Link to={`/dashboard/addAdmin`}><Button variant="inherit">AddAdmin</Button></Link>
+            <Link to={`/dashboard/addDoctor`}><Button variant="inherit">Add a doctor</Button></Link></Box>}
 
 
       </div>
@@ -112,20 +104,7 @@ function Dashboard(props) {
             <Toolbar />
 
 
-            <Switch>
-               <Route exact path={path}>
-                  <DashboardHome></DashboardHome>
-               </Route>
-               <Route path={`${path}/payment/:appointmentId`}>
-                  <Payment></Payment>
-               </Route>
-               <AdminRoute path={`${path}/addAdmin`}>
-                  <AddAdmin></AddAdmin>
-               </AdminRoute>
-               <AdminRoute path={`${path}/addDoctor`}>
-                  <AddDoctor></AddDoctor>
-               </AdminRoute>
-            </Switch>
+            <Outlet></Outlet>
 
          </Box>
       </Box>
